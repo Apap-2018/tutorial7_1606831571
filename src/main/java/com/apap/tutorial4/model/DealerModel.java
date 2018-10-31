@@ -5,12 +5,14 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 
 @Entity
 @Table(name="dealer")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class DealerModel implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

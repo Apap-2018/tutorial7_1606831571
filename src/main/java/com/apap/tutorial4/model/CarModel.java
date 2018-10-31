@@ -6,10 +6,13 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
 @Table(name="car")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class CarModel implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //autoincrement , identity : sry
