@@ -21,22 +21,35 @@ public class DealerServiceImpl implements DealerService {
 		return dealerDb.findById(id);
 	}
 	@Override
-	public void addDealer(DealerModel dealer) {
-		dealerDb.save(dealer);
+	public DealerModel addDealer(DealerModel dealer) {
+		return dealerDb.save(dealer);
 	}
-	public void deleteDealer(long dealerId) {
-		// TODO Auto-generated method stub
-		dealerDb.deleteById(dealerId);
 	
-	}
 	public List<DealerModel> getAll() {
 		return dealerDb.findAll();
 	}
 	public void updateDealer(Long id,String alamat, String noTelp) {
 		dealerDb.findById(id).get().setAlamat(alamat);
 		dealerDb.findById(id).get().setNoTelp(noTelp);
-	}	
-	
+	}
+	@Override
+	public void deleteDealer(DealerModel dealer) {
+		// TODO Auto-generated method stub
+		dealerDb.delete(dealer);
+		
+	}
+	@Override
+	public List<DealerModel> viewAllDealer() {
+		return dealerDb.findAll();
+		
+	}
+	@Override
+	 public void dealerUpdate(DealerModel updateDealer, Long dealerId) {
+	  DealerModel dataLama = dealerDb.findById(dealerId).get();
+	  dataLama.setAlamat(updateDealer.getAlamat());
+	  dataLama.setNoTelp(updateDealer.getNoTelp());
+	  dealerDb.save(dataLama);
+	 }
 	
 	
 }

@@ -3,6 +3,9 @@ import java.io.Serializable;
 import java.util.List;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 
@@ -24,6 +27,7 @@ public class DealerModel implements Serializable {
 	private String noTelp;
 	
 	@OneToMany(mappedBy = "dealer", fetch = FetchType.LAZY, cascade = CascadeType.ALL) 
+	@JsonIgnore
 	private List<CarModel> listCar; //mapped : method  mana yg nyambungin dealer ama list car, fetch type : cara dapetin list car, eager :list dapet semua lazy:ketika getter setter, cascade : intinya operasi apa yg akan di cascade 
 
 	public long getId() {
