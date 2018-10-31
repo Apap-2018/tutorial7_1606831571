@@ -21,7 +21,6 @@ public class ProdusenController {
 	    return new RestTemplate();
 	}
 
-	
 	@GetMapping(value = "/model")
 	 private  ResponseEntity<String> getStatus(@RequestParam("factory") String namaProdusen) throws Exception{
 	  String path = Setting.produsenUrl + "&make=" + namaProdusen;
